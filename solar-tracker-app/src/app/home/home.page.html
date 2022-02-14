@@ -1,0 +1,153 @@
+<ion-content [fullscreen]="true">
+
+<div class="container">
+
+  <!-- <div style="width: 100%;height: 50%;"  echarts [options]="option" class="chart" #main id="main"></div> -->
+
+ <div class="header" >
+
+  <div class="backButton" >
+    <ion-icon class="backIcon"   name="chevron-back-outline"></ion-icon>
+  </div>
+  <div class="headerText">
+   <label class="headerTextLabel"   for="">Voltage</label>
+  </div>
+  <div class="settingsButton">
+    <ion-icon class="settingsIcon" name="settings-outline"></ion-icon>
+  </div>
+
+
+
+ </div>
+
+ <div id="line" [class]="_line" style="width: 100%;height: 55%;  ">
+ <div     echarts [options]="lineOption" class="chart" #main id="main"></div>  
+ </div>
+
+ <div  id="bar" [class]="_bar" style="width: 100%;height: 55%; ">
+ <div    echarts [options]="barOption" class="chart" #main2 id="main2"></div>  
+ </div>
+
+ <div class="segmentButton"  >
+
+    <ion-toolbar>
+      <ion-segment (ionChange)="changeChart($event)"  color="warning"   value="line"   >
+        <ion-segment-button value="line">
+          <ion-label>Line</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="bar">
+          <ion-label>Bar</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+
+ </div>
+
+ <div class="bottomContainer">
+   
+  <div class="dataContainer"  >
+   
+    <div class="dataCard">
+    Last Volt : 
+    <label class="dataText" for="" #lastDataColor id="lastDataColor" >
+      &nbsp; {{_lastData}}
+    </label> 
+    <!-- style="color: #29c467;" -->
+    <!-- <label class="dataText" for="" style="color: #e04055;">
+      &nbsp; 5V
+    </label>  -->
+    </div>
+
+    <div class="dataCard">
+     Avg Volt :
+     <label class="dataText" for="" style="color:#dfbb2e">
+      &nbsp; {{avgData}}
+    </label> 
+    </div>
+
+  </div>
+
+   <!-- #cf202f -->
+    <!-- #098551 -->
+
+  <div class="weatherContainer"   >
+    
+    <label *ngIf="textControl" class="weatherTextCss" for="">
+    {{weatherText}} {{degree}} <label class="weatherTextLabel" for="">
+      &nbsp;°C</label>
+     </label>  
+
+    <!-- Sunny -->
+    <div *ngIf="weatherControl=='sunny'" class="sunny"></div>  
+
+    <!-- Cloudy -->
+    <div  *ngIf="weatherControl=='cloudy'" class="partly_cloudy">
+      <div class="partly_cloudy__sun"></div>
+      <div class="partly_cloudy__cloud"></div>
+    </div>  
+
+ 
+     
+  
+    <!-- Rainy -->
+   <div  *ngIf="weatherControl=='rainy'" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+
+    <label  style="font-size: 17px;font-weight: bold;position: absolute;margin-right: 7%;" for="">
+      {{weatherText}} {{degree}} <label class="weatherTextLabel" for="">
+        &nbsp;°C</label>
+       </label>  
+
+      <div class="wrapper">
+        <div class="cloud">
+          <div class="cloud_left"></div>
+          <div class="cloud_right"></div>
+        </div>
+        <div class="rain">
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+        </div>
+        <div class="surface">
+          <div class="hit"></div>
+          <div class="hit"></div>
+          <div class="hit"></div>
+          <div class="hit"></div>
+          <div class="hit"></div>
+        </div>
+      </div>
+    </div>  
+
+    <!-- Night -->
+       <div *ngIf="weatherControl=='night'" class="moon">
+      <div class="crater crater1"></div>
+      <div class="crater crater2"></div>
+      <div class="crater crater3"></div>
+      <div class="crater crater4"></div>
+      <div class="crater crater5"></div>
+      <div class="crater crater6"></div>
+      <div class="crater crater7"></div>
+      <div class="crater crater8"></div>
+      </div>   
+
+         <!-- <div class="rainy">
+      <div class="rainy__cloud"></div>
+      <div class="rainy__rain"></div>
+    </div> -->
+
+  </div>
+
+ </div>
+
+
+</div>
+
+
+
+
+
+
+
+ 
+</ion-content>

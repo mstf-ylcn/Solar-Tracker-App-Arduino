@@ -1,0 +1,7 @@
+{
+  "name": "solar-tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
