@@ -80,7 +80,7 @@ export class HomePage {
     this.weatherControl="cloudy";
     this.textControl=1;
    }
-   else if((parseDate>=20 && parseDate<6)  && this._lastData<=1)
+   else if((parseDate>=20 || parseDate<6)  && this._lastData<=1)
    {
     this.weatherText="Clear";
     this.weatherControl="night";
